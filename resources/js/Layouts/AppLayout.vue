@@ -64,6 +64,12 @@ const logout = () => {
                                     Roles
                                 </NavLink>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
+                                 v-if="$page.props.user.permissions.includes('read users')">
+                                <NavLink :href="route('users.index')" :active="route().current('users.*')">
+                                    Users
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -239,6 +245,11 @@ const logout = () => {
                     <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('read roles')">
                         <ResponsiveNavLink :href="route('roles.index')" :active="route().current('roles.*')">
                             Roles
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1" v-if="$page.props.user.permissions.includes('read users')">
+                        <ResponsiveNavLink :href="route('users.index')" :active="route().current('users.*')">
+                            Users
                         </ResponsiveNavLink>
                     </div>
 
