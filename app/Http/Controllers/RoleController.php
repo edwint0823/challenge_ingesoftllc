@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\RoleRequest;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -11,7 +12,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::paginate(5);
+        return inertia('Roles/Index', ['roles' => $roles]);
     }
 
     /**
@@ -19,15 +21,18 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Roles/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['guard_name'] = 'web';
+        Role::create($data);
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -41,24 +46,26 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Role $role)
     {
-        //
+        return inertia('Roles/Edit', ['role' => $role]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(RoleRequest $request, Role $role)
     {
-        //
+        $role->update($request->validated());
+        return redirect()->route('roles.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('roles.index');
     }
 }
