@@ -1,66 +1,98 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Challenge INGESOFTLLC
 
-## About Laravel
+Proyecto sobre prueba de codificación para el cargo Desarrollador Backend Laravel por Edwin Tobias Ariza Tellez
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Prerrequisitos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Para un correcto funcionamiento debe contar con las siguientes tecnologías instaladas en su equipo
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Herramienta   | Versión            | link de descarga o comando                                  |
+|:--------------|:-------------------|:------------------------------------------------------------|
+| PHP           | **php 8.1^**       | [Via Xammp](https://www.apachefriends.org/es/download.html) |
+| Composer      | **Composer 2.7^**  | [Composer](https://getcomposer.org/download/)               |
+| Base de datos | **PostgreSQL 15+** | [PostgreSQL](https://www.postgresql.org/download/windows/)  |
+| Node.js       | **Node 18+**       | [Node.js](https://nodejs.org/en/download/current)           |
+| npm           | **Npm 8.6+**       |                                                             |
 
-## Learning Laravel
+**NOTA:**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Además de las anteriores herramientas debe tener habilitadas las extensiones ```pdo_pgsql``` y ```pgsql``` dentro de *
+*php.ini**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Variables de entorno
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Para el correcto funcionamiento de la aplicación debe agregar las variables de entorno en el archivo **.env**
 
-## Laravel Sponsors
+| Variable        | Descripción                                      | Valor sugerido        |
+|:----------------|:-------------------------------------------------|:----------------------|
+| `DB_CONNECTION` | Nombre del driver de conexión a la base de datos | pgsql                 |
+| `DB_HOST`       | Host de la base de datos                         | localhost             |
+| `DB_PORT`       | Puerto de conexión hacia la base de datos        | 5432                  |
+| `DB_DATABASE`   | Nombre de la base de datos                       | challenge_ingesoftllc |
+| `DB_USERNAME`   | Nombre de usuario de la base de datos            | postgres              |
+| `PG_PASSWORD`   | Contraseña del usuario de la base de datos       |                       |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Además de las anteriores variables de entorno Laravel provee diferentes variables propias del framework se recomienda
+usar los valores encontrados en el archivo **.env.example**
 
-### Premium Partners
+**NOTA:**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Estas variables también las puede encontrar en el archivo **.env.example**
 
-## Contributing
+## Instalación y puesta en marcha
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para el correcto funcionamiento del proyecto debe seguir lo siguientes pasos
 
-## Code of Conduct
+Instalar dependencias de npm
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+npm install
+```
 
-## Security Vulnerabilities
+Instalar dependencias de composer
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+```
 
-## License
+Correr las migraciones
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate
+```
+
+Correr los seeders
+
+```bash
+php artisan db:seed
+```
+
+Iniciar servidor
+
+para iniciar la aplicación debe correr en simultaneo los siguientes comandos
+
+```bash
+npm run dev
+```
+
+```bash
+php artisan serve
+```
+
+Despues de ello ingresar a la url que provee el comando ```php artisan serve```
+
+## Credenciales de usuarios dummy
+
+Las credenciales de los usuarios son los siguientes
+
+| correo            | contraseña | rol    |
+|:------------------|:-----------|:-------|
+| admin@admin.com   | Y%F3dTyL   | admin  |
+| worker@worker.com | B76q@DPC   | worker |
+
+## Autores
+
+- [@edwint0823](https://github.com/edwint0823)
+
